@@ -21,6 +21,11 @@ function App() {
     setTasks(newTasks)
   }
 
+  function addNewTasks(taskObj) {
+    let newAddTask = [...tasks, taskObj]
+    setTasks(newAddTask)
+  }
+
   function handleSelectCategories(event) {
     setSelectCategories(event.target.value)
   }
@@ -38,7 +43,7 @@ function App() {
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter categories={categories} selectCategories={selectCategories} onSetSelectCategories={handleSelectCategories}/>
-      <NewTaskForm />
+      <NewTaskForm categories={categories} onTaskFormSubmit ={addNewTasks} />
       <TaskList tasks={newTasks} onSetTasks={handleSetTasks} />
     </div>
   );
